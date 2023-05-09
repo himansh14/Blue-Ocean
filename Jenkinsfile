@@ -1,9 +1,9 @@
 pipeline {
-  agent {
+  agent any
     stages {
-      stage('Log Tool Version') {
+      stage ('Log Tool Version') {
        parallel {
-        stage('Log Tool Version') {
+        stage ('Log Tool Version') {
           steps {
             sh '''mvn --version
                   git --version
@@ -12,13 +12,10 @@ pipeline {
         }
        }
       }
-     
-      
-      stage('Post Build Steps') {
+        stage('Post Build Steps') {
           steps {
             writeFile(file: 'status.txt', text: 'Hey it worked!!!')
           }
-      }
+        }
     }
-  }
-}
+ }
