@@ -1,21 +1,30 @@
 pipeline {
   agent any
-    stages {
-      stage ('Log Tool Version') {
-       parallel {
-        stage ('Log Tool Version') {
+  stages {
+    stage('Log Tool Version') {
+      parallel {
+        stage('Log Tool Version') {
           steps {
             sh '''mvn --version
                   git --version
                   java -version'''
           }
         }
-       }
+
       }
-        stage('Post Build Steps') {
-          steps {
-            writeFile(file: 'status.txt', text: 'Hey it worked!!!')
-          }
-        }
     }
- }
+
+    stage('Build') {
+      agent {
+        docker {
+          image 'alpine'
+        }
+
+      }
+      steps {
+        sh 'echo "this is a build step for a sample docker image alpine"'
+      }
+    }
+
+  }
+}
