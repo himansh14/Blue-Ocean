@@ -1,11 +1,6 @@
 pipeline {
   agent {
     stages {
-      stage('Dockerfile') {
-        dockerfile {
-          filename 'Dockerfile'
-        }
-      }
       stage('Log Tool Version') {
        parallel {
         stage('Log Tool Version') {
