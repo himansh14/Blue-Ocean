@@ -26,5 +26,17 @@ pipeline {
       }
     }
 
+    stage('Test') {
+      steps {
+        sh 'echo "test the job"'
+      }
+    }
+
+    stage('Deploy') {
+      steps {
+        sh 'echo "Deploy to prod env"'
+      }
+    }
+
   }
 }
