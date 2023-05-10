@@ -23,7 +23,6 @@ pipeline {
       }
       steps {
         sh 'echo "this is a build step for a sample docker image alpine"'
-        dockerNode(image: 'alpine')
       }
     }
 
